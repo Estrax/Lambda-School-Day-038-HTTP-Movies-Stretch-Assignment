@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
+import MovieCreate from './Movies/MovieCreate';
 
 export default class App extends Component {
   constructor(){
@@ -15,7 +16,7 @@ export default class App extends Component {
   addToSavedList = (movie) => {
     console.log(this.state.savedList)
     const savedList = this.state.savedList;
-    savedList.push(movie);
+    if(savedList.length === 0 || savedList.filter(elem => elem.id === movie.id).length === 0) savedList.push(movie);
     this.setState({savedList});
   }
 
@@ -24,6 +25,7 @@ export default class App extends Component {
       <div>
         <SavedList list={this.state.savedList} />
         <Route exact path="/" component={MovieList} />
+        <Route exact path="/movie/add" component={MovieCreate} />
         <Route path="/movies/:id" render={ (props) => {
           return(<Movie {...props} addToSavedList={this.addToSavedList}/>)
         }} />

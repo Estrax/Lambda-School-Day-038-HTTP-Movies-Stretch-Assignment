@@ -66,12 +66,26 @@ body {
   color: white;
 }
 
-.home-button {
+.home-button a {
   padding: 5px 10px;
+  margin: 0 10px;
   background-color: lightskyblue;
 }
 
 .movie-warning {
   color: red;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+}
+
+.card-title {
   text-align: center;
 }
